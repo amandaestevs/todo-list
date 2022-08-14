@@ -1,0 +1,1 @@
+//creating the todos, filtering and sending them off to domElements to be added into the page
