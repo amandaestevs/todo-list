@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --Lato: 'Lato', sans-serif;
+    --Playfair-display: 'Playfair Display', serif;
+    
+    --blue-gray: #6699CC;
+    --green: #39DC51;
+    --light-blue: #00E0FF;
+    --blue: #00A8FF;
+    --gray: #A1AF9F;
+    --pink: #FF0661;
+    --dark-green: #005900;
+    --yellow: #EDF804;
+    --red: #F6000A;
+    --light-gray: #ECECDE;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h1, h2, h3 {
+    font-family: var(--Playfair-display);
+}
+
+p, div, span, a {
+    font-family: var(--Lato);
+}
+
+body { 
+    width: 100%;
+    min-height: 100vh;
+    font-size: 17px;
+    color: rgba(0, 0, 0, 0.9)
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    width: 100%;
+    height: 100%;
+}
+
+/* header */
+.header-container {
+    grid-column: 1 / -1;
+    background-color: var(--blue-gray);
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+}
+/* 
+side-bar */
+.side-bar-container {
+    grid-column: 1 / 2;
+    height: 90vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.side-bar-container h2 {
+    font-size: 32px;
+}
+
+.home ul {
+    margin-left: 15px;
+    padding: 10px;
+}
+
+.home li {
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+.home li img {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+
+.projects-container {
+    padding: 8px;
+}
+
+.add-project {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.add-project img {
+    width: 10%;
+}
+
+.projects {
+    margin-left: 20px;
+    padding: 10px;
+}
+
+.projects li {
+    margin-bottom: 5px;
+    padding: 5px;
+    border-left: 2px solid var(--red);
+}
+
+.add-project:hover, .home li:hover, .projects li:hover {
+    background-color: var(--light-gray);
+}
+
+/* main-content */
+.main-content-container {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+}
+
+.search-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 25px;
+}
+
+.search-bar input {
+    background-color: var(--light-gray);
+    border-radius: 15px;
+    width: 40%;
+    height: 70%;
+    padding: 5px;
+    border: none;
+}
+
+.search-bar img {
+    margin-left: 15px;
+    width: 3%;
+}
+
+.todo-container {
+    padding: 25px;
+    background-color: var(--light-gray);
+}
+
+.todo {
+    width: 90%;
+    border-radius: 15px;
+    height: 8vh;
+    margin-left: 15px;
+    /* background-color: white; */
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(to right, var(--dark-green) 8px, white 0);
+}
+
+.todo-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.todo input[type='checkbox']{
+    opacity: 0;
+    position: relative;
+}
+
+.todo-icons {
+    margin-left: 30px;
+}
+
+.todo img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.todo label {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* checkbox */
+label::before, label::after {
+     content: "";
+     border-radius: 50%;
+     width: 25px;
+     height: 25px;
+     position: absolute;
+     left: 50px;
+     top: 12px;
+     border: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+.todo input[type="checkbox"]:checked + label::after {
+   background-image: url(icons/check-solid.svg);
+   background-size: 20px 20px;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-color: var(--green);
+}
+
+/* Add button */
+.addTodoBtn {
+    border: none;
+    border-radius: 50%;
+    position: fixed;
+    background-color: var(--blue-gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 5rem;
+    right: 6rem;
+    cursor: pointer;
+    height: 60px;
+    width: 60px;
+}
+
+.addTodoBtn:hover {
+    height: 65px;
+    width: 65px;
+}
+
+.addTodoBtn img {
+    transition: transform 0.5s ease-in-out;
+}
+
+.addTodoBtn img:hover {
+     transform: rotate(180deg);
+}
+
+/* forms */
