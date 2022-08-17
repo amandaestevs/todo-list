@@ -1,3 +1,4 @@
+@import url("colors.css");
 * {
     margin: 0;
     padding: 0;
@@ -7,18 +8,7 @@
 :root {
     --Lato: 'Lato', sans-serif;
     --Playfair-display: 'Playfair Display', serif;
-    
-    --blue-gray: #6699CC;
-    --green: #39DC51;
-    --light-blue: #00E0FF;
-    --blue: #00A8FF;
-    --gray: #A1AF9F;
-    --pink: #FF0661;
-    --dark-green: #005900;
-    --yellow: #EDF804;
-    --red: #F6000A;
-    --light-gray: #ECECDE;
-}
+} 
 
 ul {
     list-style: none;
@@ -41,7 +31,7 @@ body {
     width: 100%;
     min-height: 100vh;
     font-size: 17px;
-    color: rgba(0, 0, 0, 0.9)
+    color: rgba(0, 0, 0, 0.9);
 }
 
 .main-container {
@@ -49,6 +39,12 @@ body {
     grid-template-columns: 1fr 3fr;
     width: 100%;
     height: 100%;
+}
+
+.todo img, .project img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
 
 /* header */
@@ -109,6 +105,8 @@ side-bar */
 
 .add-project img {
     width: 10%;
+    margin-right: 5px;
+    transition: 0.5 ease-in-out;
 }
 
 .projects {
@@ -116,14 +114,33 @@ side-bar */
     padding: 10px;
 }
 
-.projects li {
+.project {
     margin-bottom: 5px;
     padding: 5px;
-    border-left: 2px solid var(--red);
+    display: flex;
+    justify-content: space-between;
+    background: var(--green-gradient);
+    position: relative;
 }
 
-.add-project:hover, .home li:hover, .projects li:hover {
+.project img {
+    display: none;
+}
+
+.project:hover img {
+    display: block;
+}
+
+.project a {
+    margin-left: 5px;
+}
+
+.add-project:hover, .home li:hover {
     background-color: var(--light-gray);
+}
+
+.add-project:hover img {
+    transform: rotate(180deg);
 }
 
 /* main-content */
@@ -153,6 +170,7 @@ side-bar */
     width: 3%;
 }
 
+/* todos  */
 .todo-container {
     padding: 25px;
     background-color: var(--light-gray);
@@ -160,15 +178,13 @@ side-bar */
 
 .todo {
     width: 90%;
-    border-radius: 15px;
     height: 8vh;
     margin-left: 15px;
-    /* background-color: white; */
     display: grid;
-    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-columns: 1fr 6fr 2fr;
     align-items: center;
     position: relative;
-    background: linear-gradient(to right, var(--dark-green) 8px, white 0);
+    background: linear-gradient(to right, var(--blue) 8px, white 0);
 }
 
 .todo-title {
@@ -176,28 +192,29 @@ side-bar */
     font-weight: 500;
 }
 
-.todo input[type='checkbox']{
-    opacity: 0;
-    position: relative;
-}
-
 .todo-icons {
-    margin-left: 30px;
+    margin-left: 40px;
+    display: flex;
+    align-items: center;
 }
 
-.todo img {
-    width: 20px;
-    height: 20px;
+.todo-icons button {
+    border: 1px solid var(--blue-gray);
+    background-color: white;
+    color: var(--blue-gray);
+    padding: 5px 10px;
     cursor: pointer;
+    margin-right: 5px;
 }
 
 .todo label {
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 /* checkbox */
-label::before, label::after {
+.todo-label::before, .todo-label::after {
      content: "";
      border-radius: 50%;
      width: 25px;
@@ -206,14 +223,20 @@ label::before, label::after {
      left: 50px;
      top: 12px;
      border: 1px solid rgba(0, 0, 0, 0.6);
+     cursor: pointer;
 }
 
-.todo input[type="checkbox"]:checked + label::after {
+.todo input[type="checkbox"]:checked + .todo-label::after {
    background-image: url(icons/check-solid.svg);
    background-size: 20px 20px;
    background-repeat: no-repeat;
    background-position: center;
    background-color: var(--green);
+}
+
+.todo input[type='checkbox']{
+    opacity: 0;
+    position: relative;
 }
 
 /* Add button */
@@ -238,7 +261,7 @@ label::before, label::after {
 }
 
 .addTodoBtn img {
-    transition: transform 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
 }
 
 .addTodoBtn img:hover {
@@ -246,3 +269,174 @@ label::before, label::after {
 }
 
 /* forms */
+.todo-form {
+    position: absolute;
+    top: -100%;
+    margin-top: -180px;
+    left: 50%;
+    margin-left: -300px;
+    width: 600px;
+    height: 360px;
+    background-color: white;
+}
+
+.form-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--blue-gray);
+    color: white;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.form-title img {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.todo-form label {
+    margin-bottom: 15px;
+}
+
+.form-inputs, .project-inputs {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.form-inputs input[type="text"]{
+    width: 50%;
+    padding: 10px;
+    border: none;
+}
+
+textarea {
+    margin-bottom: 15px;
+    border: none;
+}
+
+.form-inputs input[type="text"]:focus, textarea:focus, #Project-name:focus {
+     outline: 2px solid blue;
+     border: none;
+}
+
+.form-inputs input, .form-inputs select {
+    margin-left: 8px;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.submit-todo, .submit-project {
+     width: 10em;
+     border: none;
+     font-weight: 1em;
+     color: white;
+     background-color: var(--blue-gray);
+     padding: 10px 15px;
+     border-radius: 5px;
+     cursor: pointer;
+}
+
+/* project form */
+.project-form {
+    position: absolute;
+    top: -100%;
+    margin-top: -135px;
+    left: 50%;
+    margin-left: -300px;
+    width: 600px;
+    height: 270px;
+    background-color: white;
+}
+
+#Project-name {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid black;
+    margin-bottom: 15px;
+}
+
+.color-picker-title {
+    margin-bottom: 10px;
+}
+
+.color-picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    margin-bottom: 20px;
+}
+
+.color {
+    border-radius: 50%;
+    border: 1px solid black;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.color:focus {
+    outline: 3px solid gray;
+}
+
+/* edit-delete btn */
+.edit-delete {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 6em;
+    height: 1em;
+    top: -1000%;
+    right: -8%;
+}
+
+.edit-delete div {
+    background-color: #e6e4e4;
+    padding: 8px 10px;
+    border: none;
+    font-size: 0.8em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-delete div:hover {
+    background-color: 	#fcf9f9;
+}
+
+.show-menu {
+    top: -40%;
+}
+/*todo details*/
+.see-more {
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 400px;
+    margin-left: -200px;
+    height: 220px;
+    margin-top: -110px;
+} 
+
+.see-more-info {
+    padding: 0px 10px;
+}
+
+.see-more-info div {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+}
+
