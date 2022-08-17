@@ -8,6 +8,9 @@
 :root {
     --Lato: 'Lato', sans-serif;
     --Playfair-display: 'Playfair Display', serif;
+    --blue-gray: #6699CC;
+    --light-gray: #ECECDE;
+    --blue: #0096FF;
 } 
 
 ul {
@@ -119,8 +122,16 @@ side-bar */
     padding: 5px;
     display: flex;
     justify-content: space-between;
-    background: var(--green-gradient);
     position: relative;
+}
+
+.project:hover {
+    background-color: var(--light-gray);
+}
+
+.project.active a{
+    font-weight: bold;
+    background-color: var(--light-gray);
 }
 
 .project img {
@@ -347,47 +358,24 @@ textarea {
 .project-form {
     position: absolute;
     top: -100%;
-    margin-top: -135px;
+    margin-top: -100px;
     left: 50%;
     margin-left: -300px;
     width: 600px;
-    height: 270px;
+    height: 200px;
     background-color: white;
 }
 
-#Project-name {
+#project-name {
     width: 100%;
     padding: 10px;
     border: none;
     border-bottom: 1px solid black;
-    margin-bottom: 15px;
-}
-
-.color-picker-title {
-    margin-bottom: 10px;
-}
-
-.color-picker {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5em;
     margin-bottom: 20px;
 }
 
-.color {
-    border-radius: 50%;
-    border: 1px solid black;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-}
-
-.color:focus {
-    outline: 3px solid gray;
-}
-
 /* edit-delete btn */
-.edit-delete {
+.action-btn {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -397,7 +385,7 @@ textarea {
     right: -8%;
 }
 
-.edit-delete div {
+.action-btn div {
     background-color: #e6e4e4;
     padding: 8px 10px;
     border: none;
@@ -408,7 +396,7 @@ textarea {
     align-items: center;
 }
 
-.edit-delete div:hover {
+.action-btn div:hover {
     background-color: 	#fcf9f9;
 }
 
