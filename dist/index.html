@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="colors.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:wght@400;500&display=swap");
     </style>
@@ -21,10 +22,10 @@
         <div class="home">
           <h2>Home</h2>
           <ul>
-            <li><img src="icons/inbox-solid.svg" /><a>Inbox</a></li>
-            <li><img src="icons/calendar-day-solid.svg" /><a>Today</a></li>
-            <li><img src="icons/calendar-week-solid.svg" /><a>This Week</a></li>
-            <li><img src="icons/star-solid.svg" alt=""><a>Important</a></li>
+            <li id="inbox" class="tab"><img src="icons/inbox-solid.svg" /><a>Inbox</a></li>
+            <li id="today" class="tab"><img src="icons/calendar-day-solid.svg" /><a>Today</a></li>
+            <li id="this-week" class="tab"><img src="icons/calendar-week-solid.svg" /><a>This Week</a></li>
+            <li id="important" class="tab"><img src="icons/star-solid.svg"/><a>Important</a></li>
           </ul>
         </div>
         <div>
@@ -34,12 +35,15 @@
               <img src="icons/add.svg" alt="" /><span>New Project</span>
             </div>
             <ul class="projects">
-              <li><a>Work</a></li>
+              <li class="project tab">
+                <a>Work</a><img src="icons/kebab-menu.svg" class="kebab-menu"/>
+              </li>
             </ul>
           </div>
         </div>
       </div>
-
+      
+      <!-- todo container and search bar -->
       <div class="main-content-container">
         <div class="search-bar">
           <img src="icons/search.svg" alt="" /><input
@@ -49,22 +53,109 @@
           />
         </div>
         <div class="todo-container">
-          <div class="todo expanded">
+          <div class="todo">
             <input type="checkbox" id="todo" />
-            <label for="todo">
+            <label for="todo" class="todo-label">
               <div class="todo-title">Shower</div>
-              <input type="date" name="" id="" />
+              <div class="todo-due-date">15/08/2022</div>
             </label>
             <div class="todo-icons">
-              <img src="icons/expand.svg" alt="" />
-              <img src="icons/kebab-menu.svg" alt="" />
+              <button class="see-more-btn">SEE MORE</button>
+              <img src="icons/kebab-menu.svg" class="kebab-menu" />
+            </div>
+            <div class="edit-delete">
+              <div class="edit-btn">Edit</div>
+              <div class="delete-btn">Delete</div>
             </div>
           </div>
-          <button class="addTodoBtn"><img src="icons/add.svg" alt=""></button>
+          <button class="addTodoBtn"><img src="icons/add.svg" alt="" /></button>
         </div>
       </div>
     </div>
 
+    <!-- elements outside of main container -->
+    <div class="see-more">
+      <div class="form-title">
+        <div class="see-more-todo-title">title</div>
+        <img src="icons/close.svg" class="close-btn"/>
+      </div>
+      <div class="see-more-info">
+        <div><div>Description:</div><div class="see-more-todo-description"></div></div>
+        <div><div>Due Date:</div><div class="see-more-todo-due-date"></div></div>
+        <div><div>Priority:</div><div class="see-more-todo-priority"></div></div>
+        <div><div>Project:</div><div class="see-more-todo-project"></div></div>
+      </div>
+    </div>
 
+    <div class="todo-form">
+      <div class="form-title">
+        <h3>New Task</h3>
+        <img src="icons/close.svg" class="close-btn" />
+      </div>
+
+      <div class="form-inputs">
+        <label for="task-name"
+          >Title:
+          <input
+            type="text"
+            id="task-name"
+            placeholder="e.g Work out"
+            required
+          />
+        </label>
+
+        <label for="description">Description: </label>
+        <textarea
+          id="description"
+          cols="20"
+          rows="3"
+          placeholder="Description"
+        ></textarea>
+
+        <label for="due-date"
+          >Due Date: <input type="date" id="due-date"
+        /></label>
+
+        <label for="priority">
+          Priority:
+          <select id="priority">
+            <option value="Normal">Normal</option>
+            <option value="Important">Important</option>
+          </select>
+        </label>
+
+        <div class="button-container">
+          <button type="submit" class="submit-todo">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-form">
+      <div class="form-title">
+        <h3>New project</h3>
+        <img src="icons/close.svg" class="close-btn" />
+      </div>
+
+      <div class="project-inputs">
+        <label for="Project-name">
+          <input type="text" id="Project-name" placeholder="Project Name" />
+        </label>
+
+        <h3 class="color-picker-title">Pick a theme color:</h3>
+        <div class="color-picker">
+          <button class="color blue"></button>
+          <button class="color dark-blue"></button>
+          <button class="color purple"></button>
+          <button class="color pink"></button>
+          <button class="color red"></button>
+          <button class="color orange"></button>
+          <button class="color yellow"></button>
+          <button class="color green"></button>
+        </div>
+        <div class="button-container">
+          <button type="submit" class="submit-project">Submit</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,1 +1,10 @@
-//creating the todos, filtering and sending them off to domElements to be added into the page
+
+class tasks {
+    constructor(name, description, dueDate, importance){
+        this.name = name
+        this.description = description
+        this.dueDate = dueDate
+        this.importance = importance
+        this.project = this.project
+    }
+}
