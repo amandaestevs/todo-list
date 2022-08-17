@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List</title>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="colors.css" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:wght@400;500&display=swap");
     </style>
@@ -22,7 +21,7 @@
         <div class="home">
           <h2>Home</h2>
           <ul>
-            <li id="inbox" class="tab"><img src="icons/inbox-solid.svg" /><a>Inbox</a></li>
+            <li id="inbox" class="tab active"><img src="icons/inbox-solid.svg" /><a>Inbox</a></li>
             <li id="today" class="tab"><img src="icons/calendar-day-solid.svg" /><a>Today</a></li>
             <li id="this-week" class="tab"><img src="icons/calendar-week-solid.svg" /><a>This Week</a></li>
             <li id="important" class="tab"><img src="icons/star-solid.svg"/><a>Important</a></li>
@@ -50,7 +49,7 @@
       <!-- todo container and search bar -->
       <div class="main-content-container">
         <div class="search-bar">
-          <img src="icons/search.svg" alt="" /><input
+          <img src="icons/search.svg"/><input
             type="search"
             name=""
             id=""
@@ -142,7 +141,7 @@
 
       <div class="project-inputs">
         <label for="project-name">
-          <input type="text" id="project-name" placeholder="Project Name" />
+          <input type="text" id="project-name" placeholder="Project Name" required/>
         </label>
 
         <div class="button-container">

@@ -1,4 +1,3 @@
-@import url("colors.css");
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +10,7 @@
     --blue-gray: #6699CC;
     --light-gray: #ECECDE;
     --blue: #0096FF;
+    --green: #26e920;
 } 
 
 ul {
@@ -50,6 +50,15 @@ body {
     cursor: pointer;
 }
 
+.active {
+    font-weight: bold;
+    background-color: var(--light-gray);
+}
+
+.project.active {
+    background: linear-gradient(to right, var(--blue) 5px, var(--light-gray) 0);
+}
+
 /* header */
 .header-container {
     grid-column: 1 / -1;
@@ -79,20 +88,25 @@ side-bar */
     font-size: 32px;
 }
 
+.tab {
+    margin-bottom: 5px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.tab:hover, .add-project:hover {
+    background-color: var(--light-gray);
+}
+
 .home ul {
     margin-left: 15px;
     padding: 10px;
 }
 
-.home li {
-    margin-bottom: 5px;
-    padding: 5px;
-}
-
 .home li img {
     width: 15px;
     height: 15px;
-    margin-right: 5px;
+    margin-right: 8px;
 }
 
 .projects-container {
@@ -109,7 +123,6 @@ side-bar */
 .add-project img {
     width: 10%;
     margin-right: 5px;
-    transition: 0.5 ease-in-out;
 }
 
 .projects {
@@ -118,20 +131,9 @@ side-bar */
 }
 
 .project {
-    margin-bottom: 5px;
-    padding: 5px;
     display: flex;
     justify-content: space-between;
     position: relative;
-}
-
-.project:hover {
-    background-color: var(--light-gray);
-}
-
-.project.active a{
-    font-weight: bold;
-    background-color: var(--light-gray);
 }
 
 .project img {
@@ -144,14 +146,6 @@ side-bar */
 
 .project a {
     margin-left: 5px;
-}
-
-.add-project:hover, .home li:hover {
-    background-color: var(--light-gray);
-}
-
-.add-project:hover img {
-    transform: rotate(180deg);
 }
 
 /* main-content */
@@ -381,8 +375,8 @@ textarea {
     position: absolute;
     width: 6em;
     height: 1em;
-    top: -1000%;
-    right: -8%;
+    top: -10000%;
+    /* right: -%; */
 }
 
 .action-btn div {
