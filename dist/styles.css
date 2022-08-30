@@ -185,11 +185,12 @@ side-bar */
     width: 90%;
     height: 8vh;
     margin-left: 15px;
+    margin-bottom: 15px;
     display: grid;
-    grid-template-columns: 1fr 6fr 2fr;
+    grid-template-columns: 1fr 5fr 2fr;
     align-items: center;
     position: relative;
-    background: linear-gradient(to right, var(--blue) 8px, white 0);
+    /* background: linear-gradient(to right, var(--blue) 8px, white 0); */
 }
 
 .todo-title {
@@ -201,6 +202,10 @@ side-bar */
     margin-left: 40px;
     display: flex;
     align-items: center;
+}
+
+.todo img {
+    margin: 0px 5px;
 }
 
 .todo-icons button {
@@ -244,6 +249,11 @@ side-bar */
     position: relative;
 }
 
+.task-checked {
+   text-decoration: line-through;
+   color: rgba(0, 0, 0, 0.5);
+}
+
 /* Add button */
 .addTodoBtn {
     border: none;
@@ -274,14 +284,14 @@ side-bar */
 }
 
 /* forms */
-.todo-form {
+.todo-form, .edit-todo-form {
     position: absolute;
     top: -100%;
-    margin-top: -180px;
+    margin-top: -175px;
     left: 50%;
     margin-left: -300px;
     width: 600px;
-    height: 360px;
+    height: 350px;
     background-color: white;
 }
 
@@ -301,7 +311,7 @@ side-bar */
     cursor: pointer;
 }
 
-.todo-form label {
+.todo-form label, .edit-todo-form label {
     margin-bottom: 15px;
 }
 
@@ -312,7 +322,7 @@ side-bar */
 }
 
 .form-inputs input[type="text"]{
-    width: 50%;
+    width: 80%;
     padding: 10px;
     border: none;
 }
@@ -337,7 +347,7 @@ textarea {
     justify-content: center;
 }
 
-.submit-todo, .submit-project {
+.submit-todo, .submit-project, .edit-todo, .submit-edit-project {
      width: 10em;
      border: none;
      font-weight: 1em;
@@ -349,7 +359,7 @@ textarea {
 }
 
 /* project form */
-.project-form {
+.project-form, .edit-project-form {
     position: absolute;
     top: -100%;
     margin-top: -100px;
@@ -360,7 +370,7 @@ textarea {
     background-color: white;
 }
 
-#project-name {
+#project-name, #edit-project-name {
     width: 100%;
     padding: 10px;
     border: none;
@@ -368,18 +378,18 @@ textarea {
     margin-bottom: 20px;
 }
 
-/* edit-delete btn */
-.action-btn {
+/* projects menu btn */
+.projects-btn {
     display: flex;
     flex-direction: column;
     position: absolute;
     width: 6em;
     height: 1em;
     top: -10000%;
-    /* right: -%; */
+    right: -43%;
 }
 
-.action-btn div {
+.projects-btn div {
     background-color: #e6e4e4;
     padding: 8px 10px;
     border: none;
@@ -390,12 +400,12 @@ textarea {
     align-items: center;
 }
 
-.action-btn div:hover {
+.projects-btn div:hover {
     background-color: 	#fcf9f9;
 }
 
 .show-menu {
-    top: -40%;
+    top: -45%;
 }
 /*todo details*/
 .see-more {
@@ -416,9 +426,21 @@ textarea {
 }
 
 .see-more-info div {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     display: flex;
     gap: 0.5em;
     align-items: center;
 }
 
+.see-more-title {
+    justify-content: center;
+    position: relative;
+    font-size: 1.4em;
+}
+
+.see-more-title img {
+    position: absolute;
+    margin-top: -10px;
+    top: 50%;
+    right: 2%;
+}

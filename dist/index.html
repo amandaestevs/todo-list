@@ -34,13 +34,6 @@
               <img src="icons/add.svg" alt="" /><span>New Project</span>
             </div>
             <ul class="projects">
-              <li class="project tab">
-                <a>Work</a><img src="icons/kebab-menu.svg" class="kebab-menu"/>
-                <div class="action-btn">
-                  <div class="edit-btn">Edit</div>
-                  <div class="delete-btn">Delete</div>
-                </div>
-              </li>
             </ul>
           </div>
         </div>
@@ -56,29 +49,15 @@
           />
         </div>
         <div class="todo-container">
-          <div class="todo">
-            <input type="checkbox" id="todo" />
-            <label for="todo" class="todo-label">
-              <div class="todo-title">Shower</div>
-              <div class="todo-due-date">15/08/2022</div>
-            </label>
-            <div class="todo-icons">
-              <button class="see-more-btn">SEE MORE</button>
-              <img src="icons/kebab-menu.svg" class="kebab-menu" />
-            </div>
-            <div class="action-btn">
-              <div class="edit-btn">Edit</div>
-              <div class="delete-btn">Delete</div>
-            </div>
-          </div>
-          <button class="addTodoBtn"><img src="icons/add.svg" alt="" /></button>
+         
         </div>
+        <button class="addTodoBtn"><img src="icons/add.svg" alt="" /></button>
       </div>
     </div>
 
     <!-- elements outside of main container -->
     <div class="see-more">
-      <div class="form-title">
+      <div class="form-title see-more-title">
         <div class="see-more-todo-title">title</div>
         <img src="icons/close.svg" class="close-btn"/>
       </div>
@@ -86,7 +65,6 @@
         <div><div>Description:</div><div class="see-more-todo-description"></div></div>
         <div><div>Due Date:</div><div class="see-more-todo-due-date"></div></div>
         <div><div>Priority:</div><div class="see-more-todo-priority"></div></div>
-        <div><div>Project:</div><div class="see-more-todo-project"></div></div>
       </div>
     </div>
 
@@ -103,6 +81,7 @@
             type="text"
             id="task-name"
             placeholder="e.g Work out"
+            maxlength="30"
             required
           />
         </label>
@@ -111,7 +90,8 @@
         <textarea
           id="description"
           cols="20"
-          rows="3"
+          rows="2"
+          maxlength="60"
           placeholder="Description"
         ></textarea>
 
@@ -149,5 +129,58 @@
         </div>
       </div>
     </div>
+
+    <div class="edit-todo-form">
+      <div class="form-title">
+        <h3>Edit Task</h3><img src="icons/close.svg" class="close-btn" />
+      </div>
+
+      <div class="form-inputs">
+        <label for="edit-name"
+          >Title:
+          <input type="text" id="edit-name" maxlength="30" required/>
+        </label>
+
+        <label for="edit-description">Description: </label>
+        <textarea
+          id="edit-description"
+          cols="20"
+          rows="2"
+          maxlength="60"
+          placeholder="Description"
+        ></textarea>
+
+        <label for="edit-due-date">Due Date: <input type="date" id="edit-due-date"/></label>
+
+        <label for="edit-priority"> Priority:
+          <select id="edit-priority">
+            <option value="Normal">Normal</option>
+            <option value="Important">Important</option>
+          </select>
+        </label>
+
+        <div class="button-container">
+          <button type="submit" class="edit-todo">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="edit-project-form">
+      <div class="form-title">
+        <h3>Edit Project</h3>
+        <img src="icons/close.svg" class="close-btn" />
+      </div>
+
+      <div class="project-inputs">
+        <label for="edit-project-name">
+          <input type="text" id="edit-project-name" required/>
+        </label>
+
+        <div class="button-container">
+          <button type="submit" class="submit-edit-project">Submit</button>
+        </div>
+      </div>
+    </div>
+
   </body>
 </html>

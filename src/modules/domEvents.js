@@ -4,22 +4,29 @@ const seeMoreBtn = document.querySelectorAll(".see-more-btn");
 const todoForm = document.querySelector(".todo-form");
 const projectForm = document.querySelector(".project-form");
 const seeMoreTask = document.querySelector(".see-more");
+const editForm = document.querySelector('.edit-todo-form');
+const editProjectForm = document.querySelector('.edit-project-form');
+const searchBarElement = document.querySelector('.search-bar');
 
 import { submitProjectBtn, createProject } from "./projects";
+import { submitTodoBtn, getTaskInfoFromFields, getTaskDetails, searchBar } from "./todos";
 
 export default function eventListeners () {
+  window.addEventListener('load', getCurrentProject);
   addTaskBtn.addEventListener("click", openForm);
   addProjectBtn.addEventListener("click", openForm);
   closeBtn.forEach((btn) => btn.addEventListener("click", close));
   seeMoreBtn.forEach((btn) => btn.addEventListener("click", openSeeMore));
-  kebabMenu.forEach((btn) => btn.addEventListener("click", handleMenu));
+  submitTodoBtn.addEventListener('click', getTaskInfoFromFields);
   submitProjectBtn.addEventListener("click", createProject);
+  searchBarElement.addEventListener('input', searchBar);
 }
 
 export let isFormOpen = false;
 function openForm(event) {
   if (isFormOpen) return;
   isFormOpen = true;
+  document.addEventListener('keypress', checkForKeyPress)
   if (addTaskBtn === event.currentTarget) return (todoForm.style.top = "50%");
   if (addProjectBtn === event.currentTarget)
     return (projectForm.style.top = "50%");
@@ -34,27 +41,28 @@ function close(event) {
     return (projectForm.style.top = "-100%");
   if (seeMoreTask === event.currentTarget.parentNode.parentNode)
     return (seeMoreTask.style.top = "-100%");
+  if (editForm === event.currentTarget.parentNode.parentNode)
+    return (editForm.style.top = "-100%");
+  if (editProjectForm === event.currentTarget.parentNode.parentNode)
+    return (editProjectForm.style.top = "-100%");
 }
 
-const kebabMenu = document.querySelectorAll(".kebab-menu");
-const menu = document.querySelector(".action-btn");
-function handleMenu() {
-  menu.classList.toggle("show-menu");
+function checkForKeyPress(e){
+  if (projectForm.style.top === "50%" && e.key === "Enter") return createProject() 
+  if (todoForm.style.top === "50%" && e.key === "Enter") return getTaskInfoFromFields() 
 }
 
-
-function openSeeMore() {
+function openSeeMore(parentTodo) {
   if (isFormOpen) return;
   isFormOpen = true;
+  getTaskDetails(parentTodo)
   seeMoreTask.style.top = "50%";
 }
-
-//user changes tab 
 
 const tabs = document.querySelectorAll('.tab');
 tabs.forEach(tab => tab.addEventListener('click', handleTabClick))
 
-import { renderTasks } from "./todos"
+import { getCurrentProject } from "./todos"
  export function handleTabClick(event){
   if (document.querySelectorAll('.active').length != 0) {
     document.getElementsByClassName('active')[0].classList.remove('active');
@@ -62,7 +70,16 @@ import { renderTasks } from "./todos"
   
   let currentTab = event.currentTarget;
   currentTab.classList.add('active');
-  renderTasks()
+  getCurrentProject()
 }
 
-//delete and edit buttons
+import {removeTask, editTask, taskCheckBox} from './todos'
+export function taskEvents(e){
+    const clickedElement = e.target;
+    const parentTodo = clickedElement.closest('.todo');
+
+    if (clickedElement.classList.contains('see-more-btn')) return openSeeMore(parentTodo)
+    if (clickedElement.classList.contains('delete-btn')) return removeTask(parentTodo)
+    if (clickedElement.classList.contains('edit-btn')) return editTask(parentTodo)
+    parentTodo.querySelector('input').addEventListener('change', taskCheckBox) 
+}
